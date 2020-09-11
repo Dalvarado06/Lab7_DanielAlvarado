@@ -5,6 +5,10 @@
  */
 package lab7_danielalvarado;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dalva
@@ -43,9 +47,21 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         js_Suciedad = new javax.swing.JSpinner();
         jLabel10 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        js_NumPuertas = new javax.swing.JSpinner();
         jb_CrearCliente = new javax.swing.JButton();
         jd_CrearEmpleado = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jt_NombreE = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jt_ApelldioEmpleado = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        js_EdadE = new javax.swing.JSpinner();
+        jb_CrearEmpleado = new javax.swing.JButton();
+        jd_VisualizarClientes = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jl_Clientes = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_Tabla1 = new javax.swing.JTable();
@@ -93,9 +109,14 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Num Puertas:");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2, 2, 10, 1));
+        js_NumPuertas.setModel(new javax.swing.SpinnerNumberModel(2, 2, 10, 1));
 
         jb_CrearCliente.setText("Crear Cliente");
+        jb_CrearCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearClienteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_CrearClienteLayout = new javax.swing.GroupLayout(jd_CrearCliente.getContentPane());
         jd_CrearCliente.getContentPane().setLayout(jd_CrearClienteLayout);
@@ -134,7 +155,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
                                 .addGroup(jd_CrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cb_Size, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(js_NumPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jd_CrearClienteLayout.createSequentialGroup()
                         .addGap(377, 377, 377)
                         .addComponent(jLabel6))
@@ -175,21 +196,119 @@ public class PrincipalFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(js_Suciedad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(js_NumPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jb_CrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
 
+        jd_CrearEmpleado.setTitle("Crear Empleado");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setText("Crear Empleado");
+
+        jLabel12.setText("Nombre: ");
+
+        jLabel13.setText("Apellido:");
+
+        jLabel14.setText("Edad: ");
+
+        js_EdadE.setModel(new javax.swing.SpinnerNumberModel(18, 18, 100, 1));
+
+        jb_CrearEmpleado.setText("Crear Empleado");
+        jb_CrearEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearEmpleadoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_CrearEmpleadoLayout = new javax.swing.GroupLayout(jd_CrearEmpleado.getContentPane());
         jd_CrearEmpleado.getContentPane().setLayout(jd_CrearEmpleadoLayout);
         jd_CrearEmpleadoLayout.setHorizontalGroup(
             jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                                .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                                        .addComponent(jt_NombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(87, 87, 87)
+                                        .addComponent(jLabel13))
+                                    .addComponent(js_EdadE, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jt_ApelldioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addComponent(jb_CrearEmpleado)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jd_CrearEmpleadoLayout.setVerticalGroup(
             jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jt_ApelldioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel11)
+                        .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel12))
+                            .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jt_NombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(jd_CrearEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel14))
+                    .addGroup(jd_CrearEmpleadoLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(js_EdadE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addComponent(jb_CrearEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
+        );
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel15.setText("Visualizar Clientes");
+
+        jl_Clientes.setModel(new DefaultListModel());
+        jScrollPane4.setViewportView(jl_Clientes);
+
+        javax.swing.GroupLayout jd_VisualizarClientesLayout = new javax.swing.GroupLayout(jd_VisualizarClientes.getContentPane());
+        jd_VisualizarClientes.getContentPane().setLayout(jd_VisualizarClientesLayout);
+        jd_VisualizarClientesLayout.setHorizontalGroup(
+            jd_VisualizarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_VisualizarClientesLayout.createSequentialGroup()
+                .addGroup(jd_VisualizarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_VisualizarClientesLayout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jLabel15))
+                    .addGroup(jd_VisualizarClientesLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        jd_VisualizarClientesLayout.setVerticalGroup(
+            jd_VisualizarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_VisualizarClientesLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel15)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -275,12 +394,27 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jm_MenuSuperior.setText("Archivo");
 
         jmi_CrearCliente.setText("Crear Clientes");
+        jmi_CrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_CrearClienteActionPerformed(evt);
+            }
+        });
         jm_MenuSuperior.add(jmi_CrearCliente);
 
         jmi_CrearEmpleado.setText("Crear Empleado");
+        jmi_CrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_CrearEmpleadoActionPerformed(evt);
+            }
+        });
         jm_MenuSuperior.add(jmi_CrearEmpleado);
 
         jmi_VerClientes.setText("Visualizar Clientes");
+        jmi_VerClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_VerClientesActionPerformed(evt);
+            }
+        });
         jm_MenuSuperior.add(jmi_VerClientes);
 
         jMenuBar1.add(jm_MenuSuperior);
@@ -341,6 +475,144 @@ public class PrincipalFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmi_CrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_CrearClienteActionPerformed
+        jd_CrearCliente.setModal(true);
+        jd_CrearCliente.pack();
+        jd_CrearCliente.setLocationRelativeTo(this);
+        jd_CrearCliente.setVisible(true);
+    }//GEN-LAST:event_jmi_CrearClienteActionPerformed
+
+    private void jmi_CrearEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_CrearEmpleadoActionPerformed
+        jd_CrearEmpleado.setModal(true);
+        jd_CrearEmpleado.pack();
+        jd_CrearEmpleado.setLocationRelativeTo(this);
+        jd_CrearEmpleado.setVisible(true);
+    }//GEN-LAST:event_jmi_CrearEmpleadoActionPerformed
+
+    private void jb_CrearEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearEmpleadoMouseClicked
+        
+        if(jt_NombreE.getText().equals("") || jt_ApelldioEmpleado.getText().equals("")){
+            JOptionPane.showMessageDialog(jd_CrearEmpleado, "No puede dejar las casillas vacias!");
+        }
+        else{
+            
+            Empleado e = new Empleado(
+                    jt_NombreE.getText(),
+                    jt_ApelldioEmpleado.getText(),
+                    (int)js_EdadE.getValue()
+            );
+            
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Empleado1.getModel();
+            
+            modelo.addElement(e);
+            
+            cb_Empleado1.setModel(modelo);
+            cb_Empleado2.setModel(modelo);
+            cb_Empleado3.setModel(modelo);
+            
+            JOptionPane.showMessageDialog(jd_CrearEmpleado, "El empleado se agrego exitosamente");
+            
+            jt_NombreE.setText("");
+            jt_ApelldioEmpleado.setText("");
+            js_EdadE.setValue(20);
+        }
+    }//GEN-LAST:event_jb_CrearEmpleadoMouseClicked
+
+    private void jb_CrearClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearClienteMouseClicked
+        
+        if(jt_NombreC.getText().isEmpty() || jt_Apellido.getText().isEmpty() ||
+                jt_NumPlaca.getText().isEmpty()){
+            JOptionPane.showMessageDialog(jd_CrearCliente, "No puede dejar las casillas vacias");
+        }
+        else{
+            
+            Cliente p = new Cliente(
+                    jt_NombreC.getText(),
+                    jt_Apellido.getText(),
+                    (int)js_Edad.getValue()
+            );
+            
+            Carro c = new Carro(
+                    jt_NumPlaca.getText(),
+                    (String)cb_Size.getSelectedItem(),
+                    (int)js_NumPuertas.getValue(),
+                    (int)js_Suciedad.getValue()
+            );
+            
+            p.getCarrosPropios().add(c);
+            
+           DefaultListModel modelo = (DefaultListModel) jl_Clientes.getModel();
+           
+           modelo.addElement(p);
+           
+           JOptionPane.showMessageDialog(jd_CrearCliente, "El cliente se creo exitosamente");
+           
+           
+           jt_NombreC.setText("");
+           jt_Apellido.setText("");
+           js_Edad.setValue(20);
+           jt_NumPlaca.setText("");
+           cb_Size.setSelectedIndex(0);
+           js_NumPuertas.setValue(2);
+           js_Suciedad.setValue(5);
+           
+           asignarCarros();
+        }
+        
+    }//GEN-LAST:event_jb_CrearClienteMouseClicked
+
+    private void jmi_VerClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_VerClientesActionPerformed
+        jd_VisualizarClientes.setModal(true);
+        jd_VisualizarClientes.pack();
+        jd_VisualizarClientes.setLocationRelativeTo(this);
+        jd_VisualizarClientes.setVisible(true);
+    }//GEN-LAST:event_jmi_VerClientesActionPerformed
+    
+    
+    private void asignarCarros(){
+        if(cb_Empleado1.getItemCount()  == 0){
+            JOptionPane.showMessageDialog(this, "No hay empleados para asignar carros");
+        }else{
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Empleado1.getModel();
+            DefaultListModel model2 = (DefaultListModel) jl_Clientes.getModel();
+            int c = 0;
+            int a = 0;
+            
+            for (int i = 0; i < model2.size(); i++) {
+                
+                Cliente p;
+                p =  (Cliente)model2.getElementAt(i);
+                
+                Empleado e;
+                e = (Empleado)modelo.getElementAt(i);
+                
+                while(e.getCarrosLavar().size() < 5 || c < p.getCarrosPropios().size()){
+                    Carro car = p.getCarrosPropios().get(c);
+                    
+                    e.getCarrosLavar().add(car);
+                    
+                    p.getCarrosPropios().remove(car);
+                    c++;
+                }
+                
+                c = 0;
+                
+                if(a < modelo.getSize()){
+                    a++;
+                }else{
+                    a = 0;
+                }
+                
+                
+            }
+            
+            cb_Empleado1.setModel(modelo);
+            cb_Empleado2.setModel(modelo);
+            cb_Empleado3.setModel(modelo);
+            jl_Clientes.setModel(model2);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -383,6 +655,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_Size;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -395,10 +672,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jb_CrearCliente;
+    private javax.swing.JButton jb_CrearEmpleado;
     private javax.swing.JDialog jd_CrearCliente;
     private javax.swing.JDialog jd_CrearEmpleado;
+    private javax.swing.JDialog jd_VisualizarClientes;
+    private javax.swing.JList<String> jl_Clientes;
     private javax.swing.JMenu jm_MenuSuperior;
     private javax.swing.JMenuItem jmi_CrearCliente;
     private javax.swing.JMenuItem jmi_CrearEmpleado;
@@ -407,9 +687,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jp_Barra2;
     private javax.swing.JProgressBar jp_Barra3;
     private javax.swing.JSpinner js_Edad;
+    private javax.swing.JSpinner js_EdadE;
+    private javax.swing.JSpinner js_NumPuertas;
     private javax.swing.JSpinner js_Suciedad;
+    private javax.swing.JTextField jt_ApelldioEmpleado;
     private javax.swing.JTextField jt_Apellido;
     private javax.swing.JTextField jt_NombreC;
+    private javax.swing.JTextField jt_NombreE;
     private javax.swing.JTextField jt_NumPlaca;
     private javax.swing.JTable jt_Tabla1;
     private javax.swing.JTable jt_Tabla2;
