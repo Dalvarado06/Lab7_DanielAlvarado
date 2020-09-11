@@ -9,35 +9,21 @@ import javax.swing.JProgressBar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class HiloTabla1 extends Thread {
+/**
+ *
+ * @author dalva
+ */
+public class HiloTabla2 extends Thread{
 
-    private JTable tabla1;
-    private JProgressBar barra1;
+    private JTable tabla2;
+    private JProgressBar barra2;
     private Carro car;
     private Empleado e;
     private boolean lavar;
 
-    public HiloTabla1(JTable tabla1, JProgressBar barra1) {
-        this.tabla1 = tabla1;
-        this.barra1 = barra1;
-    }
-
-    
-    
-    public Carro getCar() {
-        return car;
-    }
-
-    public void setCar(Carro car) {
-        this.car = car;
-    }
-
-    public boolean isLavar() {
-        return lavar;
-    }
-
-    public void setLavar(boolean lavar) {
-        this.lavar = lavar;
+    public HiloTabla2(JTable tabla2, JProgressBar barra2) {
+        this.tabla2 = tabla2;
+        this.barra2 = barra2;
     }
 
     public Empleado getE() {
@@ -47,8 +33,14 @@ public class HiloTabla1 extends Thread {
     public void setE(Empleado e) {
         this.e = e;
     }
-    
-    
+
+    public boolean isLavar() {
+        return lavar;
+    }
+
+    public void setLavar(boolean lavar) {
+        this.lavar = lavar;
+    }
 
     @Override
     public void run() {
@@ -76,13 +68,13 @@ public class HiloTabla1 extends Thread {
                     }
 
                     double tiempo = t * c.getNivelSuciedad();
-                    barra1.setMaximum((int) (t * c.getNivelSuciedad()));
+                    barra2.setMaximum((int) (t * c.getNivelSuciedad()));
 
-                    while (barra1.getValue() < barra1.getMaximum()) {
-                        barra1.setValue(barra1.getValue() + 1);
+                    while (barra2.getValue() < barra2.getMaximum()) {
+                        barra2.setValue(barra2.getValue() + 1);
                     }
 
-                    DefaultTableModel modelo = (DefaultTableModel) tabla1.getModel();
+                    DefaultTableModel modelo = (DefaultTableModel) tabla2.getModel();
 
                     Object newRow[] = {
                         c.getNumPlaca(),
@@ -93,7 +85,7 @@ public class HiloTabla1 extends Thread {
 
                     modelo.addRow(newRow);
 
-                    tabla1.setModel(modelo);
+                    tabla2.setModel(modelo);
                     
                     e.getCarrosLavar().remove(c);
                 }
