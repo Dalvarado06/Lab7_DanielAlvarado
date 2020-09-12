@@ -57,7 +57,7 @@ public class GuardarEmpleados {
         fo.close();
     }
     
-    public void guardarComboBox(){
+    public JComboBox guardarComboBox(){
         FileInputStream fi = null;
         ObjectInputStream ob = null;
         archivo = new File("./empleados.ink");
@@ -92,7 +92,7 @@ public class GuardarEmpleados {
             
         }
         
-        
+        return cb_Empleados;
     }
    
     

@@ -600,6 +600,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jm_MenuSuperior.add(jmi_VerClientes);
 
         jmi_AsignarCarros.setText("Asignar Carros");
+        jmi_AsignarCarros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_AsignarCarrosActionPerformed(evt);
+            }
+        });
         jm_MenuSuperior.add(jmi_AsignarCarros);
 
         jmi_GuardarDatos.setText("Guardar Datos");
@@ -707,13 +712,19 @@ public class PrincipalFrame extends javax.swing.JFrame {
             );
 
             DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Empleado1.getModel();
+            DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_Empleado2.getModel();
+            DefaultComboBoxModel modelo3 = (DefaultComboBoxModel) cb_Empleado3.getModel();
+            DefaultComboBoxModel modelo4 = (DefaultComboBoxModel) cb_Empleado1.getModel();
 
             modelo.addElement(e);
+            modelo2.addElement(e);
+            modelo3.addElement(e);
+            modelo4.addElement(e);
 
             cb_Empleado1.setModel(modelo);
-            cb_Empleado2.setModel(modelo);
-            cb_Empleado3.setModel(modelo);
-            cb_Empleados.setModel(modelo);
+            cb_Empleado2.setModel(modelo2);
+            cb_Empleado3.setModel(modelo3);
+            cb_Empleados.setModel(modelo4);
 
             JOptionPane.showMessageDialog(jd_CrearEmpleado, "El empleado se agrego exitosamente");
 
@@ -809,15 +820,15 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 e.getCarrosLavar().add(car);
             }
         }
-        
+
         JOptionPane.showMessageDialog(jd_AgregarCarros, "Se agregaron los carros al empleado");
     }//GEN-LAST:event_jb_AsignarMouseClicked
 
     private void jl_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_ClientesMouseClicked
-        if(evt.isMetaDown()){
-            
-            if(jl_Clientes.getSelectedIndex() >= 0){
-                
+        if (evt.isMetaDown()) {
+
+            if (jl_Clientes.getSelectedIndex() >= 0) {
+
                 popup_VC.show(jl_Clientes, evt.getX(), evt.getY());
             }
         }
@@ -828,64 +839,82 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jd_AgregarCarro.pack();
         jd_AgregarCarro.setLocationRelativeTo(this);
         jd_AgregarCarro.setVisible(true);
-        
+
     }//GEN-LAST:event_jmi_AgregarUnCarroActionPerformed
 
     private void jb_AgregarOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AgregarOMouseClicked
-       
-        if(jt_PlacaA.getText().isEmpty()){
+
+        if (jt_PlacaA.getText().isEmpty()) {
             JOptionPane.showMessageDialog(jd_AgregarCarro, "No puede dejar las casillas vacias!");
-        }else{
+        } else {
             DefaultListModel modelo = (DefaultListModel) jl_Clientes.getModel();
             int index = jl_Clientes.getSelectedIndex();
-            
+
             Carro c = new Carro(
                     jt_PlacaA.getText(),
-                    (String)cb_SizeA.getSelectedItem(),
-                    (int)js_NumA.getValue(),
-                    (int)js_SuciedadA.getValue()
+                    (String) cb_SizeA.getSelectedItem(),
+                    (int) js_NumA.getValue(),
+                    (int) js_SuciedadA.getValue()
             );
-            
-            ((Cliente)modelo.getElementAt(index)).getCarrosPropios().add(c);
-            
+
+            ((Cliente) modelo.getElementAt(index)).getCarrosPropios().add(c);
+
             jl_Clientes.setModel(modelo);
-            
+
+            jt_PlacaA.setText("");
+            cb_SizeA.setSelectedIndex(0);
+            js_NumA.setValue(2);
+            js_SuciedadA.setValue(5);
+
             JOptionPane.showMessageDialog(jd_AgregarCarro, "Se agrego el carro correctamente");
         }
     }//GEN-LAST:event_jb_AgregarOMouseClicked
 
     private void jmi_GuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_GuardarDatosActionPerformed
         GuardarClientes gc = new GuardarClientes(jl_Clientes);
-        
+
         try {
             gc.escribirClientes();
         } catch (Exception e) {
         }
-        
+
         GuardarEmpleados ge = new GuardarEmpleados(cb_Empleado1);
-        
+
         try {
             ge.escribirEmpleados();
         } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_jmi_GuardarDatosActionPerformed
 
     private void jmi_SubirDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_SubirDataActionPerformed
-       GuardarClientes gc = new GuardarClientes(jl_Clientes);
-       
+        
+        
+        GuardarClientes gc = new GuardarClientes(jl_Clientes);
+
         try {
-            gc.escribirLista();
+            DefaultListModel m = (DefaultListModel)gc.escribirLista().getModel();
+            jl_Clientes.setModel(m);
+            
         } catch (Exception e) {
         }
-        
+
         GuardarEmpleados ge = new GuardarEmpleados(cb_Empleado1);
-        
+
         try {
-            ge.guardarComboBox();
+            DefaultComboBoxModel m1 = (DefaultComboBoxModel)ge.guardarComboBox().getModel();
+            cb_Empleado1.setModel(m1);
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jmi_SubirDataActionPerformed
+
+    private void jmi_AsignarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_AsignarCarrosActionPerformed
+        jd_AgregarCarro.setModal(true);
+        jd_AgregarCarro.pack();
+        jd_AgregarCarro.setLocationRelativeTo(this);
+        jd_AgregarCarro.setVisible(true);
+    }//GEN-LAST:event_jmi_AsignarCarrosActionPerformed
 
     private void asignarCarros() {
         if (cb_Empleado1.getItemCount() == 0) {

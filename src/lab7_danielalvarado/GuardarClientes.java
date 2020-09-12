@@ -69,7 +69,7 @@ public class GuardarClientes {
         fo.close();
     }
     
-    public void escribirLista(){
+    public JList escribirLista(){
         FileInputStream fi = null;
         ObjectInputStream ob = null;
         archivo = new File("./clientes.ink");
@@ -104,7 +104,7 @@ public class GuardarClientes {
             
         }
         
-        
+        return listaClientes;
     }
    
     
