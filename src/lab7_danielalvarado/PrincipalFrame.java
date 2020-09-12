@@ -885,28 +885,54 @@ public class PrincipalFrame extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
+        JOptionPane.showMessageDialog(this, "Se guardaron los archivo correctamente");
     }//GEN-LAST:event_jmi_GuardarDatosActionPerformed
 
     private void jmi_SubirDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_SubirDataActionPerformed
-        
-        
+
         GuardarClientes gc = new GuardarClientes(jl_Clientes);
 
         try {
-            DefaultListModel m = (DefaultListModel)gc.escribirLista().getModel();
+            DefaultListModel m = (DefaultListModel) gc.escribirLista().getModel();
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_Client.getModel();
             jl_Clientes.setModel(m);
             
+            for (int i = 0; i < m.size(); i++) {
+                Cliente c = (Cliente)m.getElementAt(i);
+                
+                modelo.addElement(c);
+            }
+            
+            cb_Client.setModel(modelo);
+
         } catch (Exception e) {
         }
 
         GuardarEmpleados ge = new GuardarEmpleados(cb_Empleado1);
 
         try {
-            DefaultComboBoxModel m1 = (DefaultComboBoxModel)ge.guardarComboBox().getModel();
+            DefaultComboBoxModel m1 = (DefaultComboBoxModel) ge.guardarComboBox().getModel();
             cb_Empleado1.setModel(m1);
+
+            DefaultComboBoxModel modelo2 = (DefaultComboBoxModel) cb_Empleado2.getModel();
+            DefaultComboBoxModel modelo3 = (DefaultComboBoxModel) cb_Empleado3.getModel();
+            DefaultComboBoxModel modelo4 = (DefaultComboBoxModel) cb_Empleados.getModel();
+            for (int i = 0; i < m1.getSize(); i++) {
+                Empleado e = (Empleado)m1.getElementAt(i);
+                
+                modelo2.addElement(e);
+                modelo3.addElement(e);
+                modelo4.addElement(e);
+            }
             
+            cb_Empleado2.setModel(modelo2);
+            cb_Empleado3.setModel(modelo3);
+            cb_Empleados.setModel(modelo4);
+
         } catch (Exception e) {
         }
+
+        JOptionPane.showMessageDialog(this, "Se agrego la info correctamente");
     }//GEN-LAST:event_jmi_SubirDataActionPerformed
 
     private void jmi_AsignarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_AsignarCarrosActionPerformed

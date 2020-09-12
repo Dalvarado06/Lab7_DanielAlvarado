@@ -104,7 +104,7 @@ public class HiloTabla1 extends Thread {
             }
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(7500);
             } catch (Exception e) {
             }
         }

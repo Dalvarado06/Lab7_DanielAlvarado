@@ -5,7 +5,9 @@
  */
 package lab7_danielalvarado;
 
-public class Carro {
+import java.io.Serializable;
+
+public class Carro implements Serializable{
     
     private String numPlaca;
     private String size;
