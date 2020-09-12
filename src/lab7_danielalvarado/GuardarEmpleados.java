@@ -15,11 +15,11 @@ import java.io.Serializable;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
-public class GuardarEmpleados implements Serializable{
+public class GuardarEmpleados{
     
     private JComboBox cb_Empleados;
     private File archivo;
-
+    
     public GuardarEmpleados(JComboBox cb_Empleados) {
         this.cb_Empleados = cb_Empleados;
     }

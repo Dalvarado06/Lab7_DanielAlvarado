@@ -15,7 +15,7 @@ import java.io.Serializable;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-public class GuardarClientes implements Serializable{
+public class GuardarClientes{
     
     private JList listaClientes;
     private File archivo;

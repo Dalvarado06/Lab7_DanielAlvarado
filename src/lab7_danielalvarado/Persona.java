@@ -5,11 +5,13 @@
  */
 package lab7_danielalvarado;
 
+import java.io.Serializable;
+
 /**
  *
  * @author dalva
  */
-public class Persona {
+public class Persona implements Serializable{
     
     private String nombre;
     private String apellido;
