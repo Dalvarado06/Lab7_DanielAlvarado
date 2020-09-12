@@ -910,10 +910,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_SubirDataActionPerformed
 
     private void jmi_AsignarCarrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_AsignarCarrosActionPerformed
-        jd_AgregarCarro.setModal(true);
-        jd_AgregarCarro.pack();
-        jd_AgregarCarro.setLocationRelativeTo(this);
-        jd_AgregarCarro.setVisible(true);
+        jd_AgregarCarros.setModal(true);
+        jd_AgregarCarros.pack();
+        jd_AgregarCarros.setLocationRelativeTo(this);
+        jd_AgregarCarros.setVisible(true);
     }//GEN-LAST:event_jmi_AsignarCarrosActionPerformed
 
     private void asignarCarros() {

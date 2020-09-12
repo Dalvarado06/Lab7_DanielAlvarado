@@ -11,11 +11,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 
-public class GuardarEmpleados {
+public class GuardarEmpleados implements Serializable{
     
     private JComboBox cb_Empleados;
     private File archivo;

@@ -11,10 +11,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-public class GuardarClientes {
+public class GuardarClientes implements Serializable{
     
     private JList listaClientes;
     private File archivo;
