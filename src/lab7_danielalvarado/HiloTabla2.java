@@ -88,6 +88,7 @@ public class HiloTabla2 extends Thread{
                     tabla2.setModel(modelo);
                     
                     e.getCarrosLavar().remove(c);
+                    barra2.setValue(0);
                 }
 
                 lavar = false;
