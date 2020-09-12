@@ -57,7 +57,7 @@ public class GuardarEmpleados {
         fo.close();
     }
     
-    public void escribirLista(){
+    public void guardarComboBox(){
         FileInputStream fi = null;
         ObjectInputStream ob = null;
         archivo = new File("./empleados.ink");

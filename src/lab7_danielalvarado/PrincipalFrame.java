@@ -111,6 +111,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jmi_VerClientes = new javax.swing.JMenuItem();
         jmi_AsignarCarros = new javax.swing.JMenuItem();
         jmi_GuardarDatos = new javax.swing.JMenuItem();
+        jmi_SubirData = new javax.swing.JMenuItem();
 
         jd_CrearCliente.setTitle("Crear Cliente");
 
@@ -602,7 +603,20 @@ public class PrincipalFrame extends javax.swing.JFrame {
         jm_MenuSuperior.add(jmi_AsignarCarros);
 
         jmi_GuardarDatos.setText("Guardar Datos");
+        jmi_GuardarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_GuardarDatosActionPerformed(evt);
+            }
+        });
         jm_MenuSuperior.add(jmi_GuardarDatos);
+
+        jmi_SubirData.setText("Subir Datos");
+        jmi_SubirData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_SubirDataActionPerformed(evt);
+            }
+        });
+        jm_MenuSuperior.add(jmi_SubirData);
 
         jMenuBar1.add(jm_MenuSuperior);
 
@@ -840,6 +854,39 @@ public class PrincipalFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_AgregarOMouseClicked
 
+    private void jmi_GuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_GuardarDatosActionPerformed
+        GuardarClientes gc = new GuardarClientes(jl_Clientes);
+        
+        try {
+            gc.escribirClientes();
+        } catch (Exception e) {
+        }
+        
+        GuardarEmpleados ge = new GuardarEmpleados(cb_Empleado1);
+        
+        try {
+            ge.escribirEmpleados();
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_jmi_GuardarDatosActionPerformed
+
+    private void jmi_SubirDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_SubirDataActionPerformed
+       GuardarClientes gc = new GuardarClientes(jl_Clientes);
+       
+        try {
+            gc.escribirLista();
+        } catch (Exception e) {
+        }
+        
+        GuardarEmpleados ge = new GuardarEmpleados(cb_Empleado1);
+        
+        try {
+            ge.guardarComboBox();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jmi_SubirDataActionPerformed
+
     private void asignarCarros() {
         if (cb_Empleado1.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "No hay empleados para asignar carros");
@@ -969,6 +1016,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_CrearCliente;
     private javax.swing.JMenuItem jmi_CrearEmpleado;
     private javax.swing.JMenuItem jmi_GuardarDatos;
+    private javax.swing.JMenuItem jmi_SubirData;
     private javax.swing.JMenuItem jmi_VerClientes;
     private javax.swing.JProgressBar jp_Barra1;
     private javax.swing.JProgressBar jp_Barra2;
